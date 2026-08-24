@@ -1,0 +1,30 @@
+print("Hello, world!")
+name = input("What is your name? ")
+print(f"Welcome, {name}!")
+number = 15
+if number > 0:
+print("Positive number")
+elif number < 0:
+print("Negative number")
+else:
+print("Zero")
+for i in range(1, 4):
+print(f"Loop iteration: {i}")
+count = 0
+while count < 3:
+print(f"Count is: {count}")
+count += 1
+fruits = ["apple", "banana", "cherry"]
+fruits.append("orange")
+for index, fruit in enumerate(fruits):
+print(f"{index}: {fruit}")
+# Create a dictionary
+user = {"name": "Alice"}
+"age": 30,
+"is_member": True
+print(user["name"]) 
+user["email"] = "alice@example.com"
+def calculate_area(width, height):
+return width * height
+room_size = calculate_area(5, 4)
+print(f"The room size is {room_size} square meters.")
