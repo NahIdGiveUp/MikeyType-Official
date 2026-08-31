@@ -1,26 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 :root{
     --primary-color: #000000;
     --text-color: #ffffff;
 }
 
+html{
+    height: 100%
+}
+
 body{
     background-color: var(--primary-color);
     color: var(--text-color);
-    background-image: url("images/jplenio-field-5236879.jpg");
+    background-image: url("images/bliss.jpg");
     background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 
 nav{
     display: flex;
     z-index: 4;
     padding: 20px 10px;
-    height: 100%;
 }
 
 #game-container{
-    display: grid;
     background-color: #000000;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-height: 100%;
+    max-width: 50%;
+    margin: auto;
+        
+}
+
+footer{
+    background-color: #106BDE;
+    
+}
+
+#background{
+    position: absolute;
     height: 100%;
-    place-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
