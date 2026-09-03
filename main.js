@@ -1,55 +1,23 @@
-const codeInputElement = document.getElementById('code_display')
-const codeDisplayElement = document.getElementById('code_input')
+const fileurl = './fake-code.txt';
 
-async function readTextFile(){
-    try{
-        const response = await fetch('./fake-code.txt')
-        if (!response.ok) {
-            throw new Error(`HTTP error Status: ${response.status}`);
-        }
+fetch(fileurl)
+    .then(response => response.text())
+    .then(data => {
+        const lines = data.split('\n')
+        const shuffledlines = shuffleArray(lines);
+        displayText(shuffledlines);
+    })
+    .catch(error => console.error('Unable to read the file:', error));
 
-        const text = await response.text();
-        console.log(text);
-    } catch (error) {
-        console.error('Unable to read the file:', error);
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
     }
+    return array;
 }
 
-codeInputElement.addEventListener('input', () =>{
-
-} )
-
-var lines;
-var randomNumber;
-var lastRandomNumber;
-
-$(document.body).ready(function () {
-
-  // load the trivia from the server
-  $.ajax({
-    url: 'trivia.txt'
-  }).done(function(content) {
-
-    // normalize the line breaks, then split into lines
-    lines = content.replace(/\r\n|\r/g, '\n').trim().split('\n');
-
-    // only set up the click handler if there were lines found
-    if (lines && lines.length) {
-      $('#showLine').on('click', function () {
-        // loop to prevent repeating the last random number
-        while (randomNumber === lastRandomNumber) {
-          randomNumber = parseInt(Math.random() * lines.length);
-          // check to prevent infinite loop
-          if (lines.length === 1) { break; }
-        }
-        // keep track of the last random number
-        lastRandomNumber = randomNumber;
-
-        // show the corresponding line
-        $('#trivia').text(lines[randomNumber]);
-      });
-    }
-  });
-});
-
-readTextFile();
+function displayText(lines) {
+    const outputElement = document.getElementById('code-display');
+    outputElement.innerHTML = lines.join('<br>')
+}
