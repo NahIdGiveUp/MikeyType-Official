@@ -52,7 +52,3 @@ footer{
     justify-content: space-between;
     flex-direction: column;
 }
-
-#start-button{
-    cursor: pointer;
-}

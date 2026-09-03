@@ -1,23 +1,40 @@
-const fileurl = './fake-code.txt';
+const fileUrl = './fake-code.txt';
 
-fetch(fileurl)
-    .then(response => response.text())
-    .then(data => {
-        const lines = data.split('\n')
-        const shuffledlines = shuffleArray(lines);
-        displayText(shuffledlines);
+fetch(fileUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        return response.text();
     })
-    .catch(error => console.error('Unable to read the file:', error));
+    .then(data => {
+        const lines = data
+            .split(/\r?\n/)
+            .filter(line => line.trim() !== '');
+
+        const shuffledLines = shuffleArray(lines);
+        displayText(shuffledLines);
+    })
+    .catch(error => {
+        console.error('Unable to read the file:', error);
+    });
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+        [array[i], array[j]] = [array[j], array[i]];
     }
+
     return array;
 }
 
 function displayText(lines) {
-    const outputElement = document.getElementById('code-display');
-    outputElement.innerHTML = lines.join('<br>')
+    const outputElement = document.getElementById('code_display');
+
+    if (!outputElement) {
+        throw new Error('Element with id "code-display" was not found.');
+    }
+
+    outputElement.textContent = lines.join('\n');
 }
