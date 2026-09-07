@@ -30,7 +30,7 @@ function shuffleArray(array) {
 }
 
 function displayText(lines) {
-    const outputElement = document.getElementById('code_display');
+    const outputElement = document.getElementById('code-display');
 
     if (!outputElement) {
         throw new Error('Element with id "code-display" was not found.');
