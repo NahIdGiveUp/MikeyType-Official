@@ -27,7 +27,7 @@ nav{
     padding: 20px 10px;
 }
 
-#game-container{
+#game_container{
     background-color: #000000;
     display: flex;
     justify-content: center;
@@ -36,7 +36,6 @@ nav{
     max-height: 100%;
     max-width: 50%;
     margin: auto;
-        
 }
 
 footer{
@@ -51,4 +50,5 @@ footer{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    z-index: -1;
 }
