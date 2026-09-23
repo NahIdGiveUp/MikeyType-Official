@@ -1,4 +1,27 @@
 const fileUrl = './fake-code.txt';
+const codeDisplayElement = document.getElementById('codeDisplay')
+const codeInputElement = document.getElementById('codeInput')
+
+// codeInputElement.addEventlistener('input', () => {
+//     const arrayQuote = outputElement.querySelectorAll('span')
+//     const arrayValue = codeInputElement.value.split('')
+
+//     let correct = true
+//     arrayQuote.forEach((characterSpan, index) => {
+//         const character = arrayValue[index]
+//         if (character == null) {
+//             characterSpan.classList.remove('correct')
+//             characterSpan.classList.remove('correct')
+//             correct = false
+//         } else if (character === characterSpan.innerText) {
+//             characterSpan.classList.add('correct')
+//             characterSpan.classList.remove('incorrect')
+//         } else {
+//             characterSpan.classList.add('incorrect')
+//             characterSpan.classList.remove('correct')
+//             correct = false
+//         }
+// })
 
 fetch(fileUrl)
     .then(response => {
@@ -9,12 +32,10 @@ fetch(fileUrl)
         return response.text();
     })
     .then(data => {
-        const lines = data
-            .split(/\r?\n/)
-            .filter(line => line.trim() !== '');
-
+        const lines = data.split('\n');
         const shuffledLines = shuffleArray(lines);
-        displayText(shuffledLines);
+        console.log(shuffledLines)
+        displayText(shuffledLines[1]);
     })
     .catch(error => {
         console.error('Unable to read the file:', error);
@@ -29,12 +50,12 @@ function shuffleArray(array) {
     return array;
 }
 
-function displayText(lines) {
-    const outputElement = document.getElementById('code-display');
+function displayText(text) {
+    const outputElement = document.getElementById('codeDisplay');
 
     if (!outputElement) {
-        throw new Error('Element with id "code-display" was not found.');
+        throw new Error('Element with id "codeDisplay" was not found.');
     }
 
-    outputElement.textContent = lines.join('\n');
+    outputElement.textContent = text;
 }
