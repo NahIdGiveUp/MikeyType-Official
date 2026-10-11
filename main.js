@@ -2,27 +2,6 @@ const fileUrl = './fake-code.txt';
 const codeDisplayElement = document.getElementById('codeDisplay')
 const codeInputElement = document.getElementById('codeInput')
 
-// codeInputElement.addEventlistener('input', () => {
-//     const arrayQuote = outputElement.querySelectorAll('span')
-//     const arrayValue = codeInputElement.value.split('')
-
-//     let correct = true
-//     arrayQuote.forEach((characterSpan, index) => {
-//         const character = arrayValue[index]
-//         if (character == null) {
-//             characterSpan.classList.remove('correct')
-//             characterSpan.classList.remove('correct')
-//             correct = false
-//         } else if (character === characterSpan.innerText) {
-//             characterSpan.classList.add('correct')
-//             characterSpan.classList.remove('incorrect')
-//         } else {
-//             characterSpan.classList.add('incorrect')
-//             characterSpan.classList.remove('correct')
-//             correct = false
-//         }
-// })
-
 fetch(fileUrl)
     .then(response => {
         if (!response.ok) {
@@ -59,3 +38,25 @@ function displayText(text) {
 
     outputElement.textContent = text;
 }
+
+codeInputElement.addEventListener('input', () => {
+    const arrayCode = codeDisplayElement.querySelectorAll('span')
+    const arrayValue = codeInputElement.value.split('')
+
+    let correct = true
+    arrayCode.forEach((characterSpan, index) => {
+        const character = arrayValue[index]
+        if (character == null) {
+            characterSpan.classList.remove('correct')
+            characterSpan.classList.remove('correct')
+            correct = false
+        } else if (character === characterSpan.innerText) {
+            characterSpan.classList.add('correct')
+            characterSpan.classList.remove('incorrect')
+        } else {
+            characterSpan.classList.add('incorrect')
+            characterSpan.classList.remove('correct')
+            correct = false
+        }
+    })
+})
