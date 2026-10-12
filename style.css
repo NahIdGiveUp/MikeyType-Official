@@ -45,8 +45,7 @@ nav h1{
     height: 300px;
     width: 400px;
     max-height: 100%;
-    max-width: 50%;
-    margin: auto;
+    max-width: 100%;
     border: 2px solid;
     padding: 1rem;
 }
@@ -94,4 +93,19 @@ footer img:first-child{
     justify-content: space-between;
     flex-direction: column;
     z-index: -1;
+}
+
+#game-title{
+    border: 2px solid;
+    background-color: #338BFB;
+    color: var(--text-color);
+    display: flex;
+}
+
+#game-title p{
+    margin-left: 5px;
+}
+
+footer button{
+    background-color: #106BDE;
 }

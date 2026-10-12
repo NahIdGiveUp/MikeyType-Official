@@ -13,7 +13,7 @@ fetch(fileUrl)
     .then(data => {
         const lines = data.split('\n');
         const shuffledLines = shuffleArray(lines);
-        console.log(shuffledLines)
+        // console.log(shuffledLines)
         displayText(shuffledLines[1]);
     })
     .catch(error => {
@@ -39,24 +39,21 @@ function displayText(text) {
     outputElement.textContent = text;
 }
 
-codeInputElement.addEventListener('input', () => {
-    const arrayCode = codeDisplayElement.querySelectorAll('span')
-    const arrayValue = codeInputElement.value.split('')
+function hideGameWindow() {
+    console.log("I was clicked")
+    const gameWindow = document.getElementById("game-window");
+    gameWindow.style.display = "none";
+}
 
-    let correct = true
-    arrayCode.forEach((characterSpan, index) => {
-        const character = arrayValue[index]
-        if (character == null) {
-            characterSpan.classList.remove('correct')
-            characterSpan.classList.remove('correct')
-            correct = false
-        } else if (character === characterSpan.innerText) {
-            characterSpan.classList.add('correct')
-            characterSpan.classList.remove('incorrect')
-        } else {
-            characterSpan.classList.add('incorrect')
-            characterSpan.classList.remove('correct')
-            correct = false
-        }
-    })
+codeInputElement.addEventListener('input', () => {
+    const display = document.querySelector('#codeDisplay')
+    let words = display.textContent.split(' ')
+    words =  words.map(word => {
+        let letters = word.split('');
+        letters = letters.map(letter => `<span class=word_inner>${letter}</span>`)
+        return letters.join('');
+    });
+    words = words.map(word => `<span class="word">${word}</span>`)
+    display.innerHTML = words.join(' ')
+    console.log(display.innerHTML);
 })
