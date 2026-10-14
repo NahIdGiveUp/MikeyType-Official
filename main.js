@@ -51,22 +51,20 @@ function hideGameWindow() {
     gameWindow.style.display = "none";
 }
 
-// This basically finds the content in the div and splits them into seperate spans
-function formatCodeDisplay() {
-    const display = document.querySelector('#codeDisplay');
-    
-    if (!display.textContent.trim()) return;
+// This basically finds the letters and spaces in the div and splits them into seperate spans with the classes letters and space 
+// so that they can be styled individually
+function formatCodeDisplay(display) {
+    let text = display.textContent;
+    let tokens = text.split(/(\s+)/);
 
-    let words = display.textContent.split(' ');
-    
-    words = words.map(word => {
-        let letters = word.split('');
-        letters = letters.map(letter => `<span class="word_inner">${letter}</span>`);
-        return letters.join('');
+    let formattedTokens = tokens.map(token => {
+        if (/^\s+$/.test(token)) {
+            return `<span class="space">${token}</span>`;
+        }
+        let letters = token.split('').map(letter => `<span class="letters">${letter}</span>`).join('');
+        return letters
     });
-    
-    words = words.map(word => `<span class="word">${word}</span>`);
-    display.innerHTML = words.join(' ');
+    display.innerHTML = formattedTokens.join('');
 }
 
 // codeInputElement.addEventListener('input', () => {
