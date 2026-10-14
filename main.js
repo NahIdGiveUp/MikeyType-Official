@@ -2,6 +2,7 @@ const fileUrl = './fake-code.txt';
 const codeDisplayElement = document.getElementById('codeDisplay')
 const codeInputElement = document.getElementById('codeInput')
 
+// This fetches the content of the text file
 fetch(fileUrl)
     .then(response => {
         if (!response.ok) {
@@ -10,10 +11,12 @@ fetch(fileUrl)
 
         return response.text();
     })
+    // This splits the content into seperate lines and shuffles it into different arrays
+    // Then it displays the first array in the div codeDisplay
     .then(data => {
         const lines = data.split('\n');
         const shuffledLines = shuffleArray(lines);
-        // console.log(shuffledLines)
+        console.log(shuffledLines)
         displayText(shuffledLines[1]);
     })
     .catch(error => {
@@ -37,23 +40,35 @@ function displayText(text) {
     }
 
     outputElement.textContent = text;
+    // This function is called here, as it is after the content is added into the div
+    formatCodeDisplay(outputElement)
 }
 
+// This hides the game windows
 function hideGameWindow() {
     console.log("I was clicked")
     const gameWindow = document.getElementById("game-window");
     gameWindow.style.display = "none";
 }
 
-codeInputElement.addEventListener('input', () => {
-    const display = document.querySelector('#codeDisplay')
-    let words = display.textContent.split(' ')
-    words =  words.map(word => {
+// This basically finds the content in the div and splits them into seperate spans
+function formatCodeDisplay() {
+    const display = document.querySelector('#codeDisplay');
+    
+    if (!display.textContent.trim()) return;
+
+    let words = display.textContent.split(' ');
+    
+    words = words.map(word => {
         let letters = word.split('');
-        letters = letters.map(letter => `<span class=word_inner>${letter}</span>`)
+        letters = letters.map(letter => `<span class="word_inner">${letter}</span>`);
         return letters.join('');
     });
-    words = words.map(word => `<span class="word">${word}</span>`)
-    display.innerHTML = words.join(' ')
-    console.log(display.innerHTML);
-})
+    
+    words = words.map(word => `<span class="word">${word}</span>`);
+    display.innerHTML = words.join(' ');
+}
+
+// codeInputElement.addEventListener('input', () => {
+
+// })
