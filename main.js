@@ -103,9 +103,9 @@ codeInputElement.addEventListener('input', () => {
     if(correct) generateNewCode()
 })
 
-function startTimer() {
-    let timeleft = 60
-    
-}
+// function startTimer() {
+//     let timeleft = 60
+
+// }
 
 generateNewCode()
