@@ -60,6 +60,15 @@ nav h1{
     padding-bottom: 10px;
 }
 
+.correct{
+    color: rgb(43, 212, 43);
+}
+
+.incorrect{
+    color: red;
+    text-decoration: underline;
+}
+
 .code-input{
     background-color: var(--primary-color);
     color: var(--text-color);

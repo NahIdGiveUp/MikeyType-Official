@@ -3,25 +3,27 @@ const codeDisplayElement = document.getElementById('codeDisplay')
 const codeInputElement = document.getElementById('codeInput')
 
 // This fetches the content of the text file
-fetch(fileUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }
+function getRandomCode() {
+    fetch(fileUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
 
-        return response.text();
-    })
-    // This splits the content into seperate lines and shuffles it into different arrays
-    // Then it displays the first array in the div codeDisplay
-    .then(data => {
-        const lines = data.split('\n');
-        const shuffledLines = shuffleArray(lines);
-        console.log(shuffledLines)
-        displayText(shuffledLines[1]);
-    })
-    .catch(error => {
-        console.error('Unable to read the file:', error);
-    });
+            return response.text();
+        })
+        // This splits the content into seperate lines and shuffles it into different arrays
+        // Then it displays the first array in the div codeDisplay
+        .then(data => {
+            const lines = data.split('\n');
+            const shuffledLines = shuffleArray(lines);
+            console.log(shuffledLines)
+            displayText(shuffledLines[1]);
+        })
+        .catch(error => {
+            console.error('Unable to read the file:', error);
+        });
+}
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -44,6 +46,14 @@ function displayText(text) {
     formatCodeDisplay(outputElement)
 }
 
+async function generateNewCode() {
+    const code = await getRandomCode()
+    displayText(code)
+    // this clears the textarea after the user gets everything correct
+    codeInputElement.value = '';
+    // startTimer()
+}
+
 // This hides the game windows
 function hideGameWindow() {
     console.log("I was clicked")
@@ -59,14 +69,43 @@ function formatCodeDisplay(display) {
 
     let formattedTokens = tokens.map(token => {
         if (/^\s+$/.test(token)) {
-            return `<span class="space">${token}</span>`;
+            return `<span>${token}</span>`;
         }
-        let letters = token.split('').map(letter => `<span class="letters">${letter}</span>`).join('');
+        let letters = token.split('').map(letter => `<span>${letter}</span>`).join('');
         return letters
     });
     display.innerHTML = formattedTokens.join('');
 }
 
-// codeInputElement.addEventListener('input', () => {
+// This uses the query selector all to find all of the text in the div, and splits the input into different its own characters
+codeInputElement.addEventListener('input', () => {
+    const arrayCode = codeDisplayElement.querySelectorAll('span')
+    const arrayInput = codeInputElement.value.split('')
+    // When the correct is true it will start a new one
+    let correct = true
+    arrayCode.forEach((characterSpan, index) => {
+        const character = arrayInput[index]
+        // Then it compares the characters of the input to the display, and adds the correct and incorrect class to the display, and it is styled seperately.
+        if(character == null) {
+            characterSpan.classList.remove('correct')
+            characterSpan.classList.remove('incorrect')
+            correct = false
+        } else if (character == characterSpan.innerText) {
+            characterSpan.classList.add('correct')
+            characterSpan.classList.remove('incorrect')
+        } else {
+            characterSpan.classList.add('incorrect')
+            characterSpan.classList.remove('correct')
+            correct = false
+        }
+    });
 
-// })
+    if(correct) generateNewCode()
+})
+
+function startTimer() {
+    let timeleft = 60
+    
+}
+
+generateNewCode()
