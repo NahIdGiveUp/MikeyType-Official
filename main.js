@@ -61,6 +61,22 @@ function hideGameWindow() {
     gameWindow.style.display = "none";
 }
 
+function showGameWindow() {
+    console.log("I was clicked")
+    const gameWindow = document.getElementById("game-window");
+    gameWindow.style.display = "block";
+}
+
+function toggleGameWindow() {
+    console.log("I was clicked")
+    const gameWindow = document.getElementById("game-window");
+    if (gameWindow.style.display == "none") {
+        gameWindow.style.display = "block";
+    }
+    else {
+        gameWindow.style.display = "none";
+    }
+}
 // This basically finds the letters and spaces in the div and splits them into seperate spans with the classes letters and space 
 // so that they can be styled individually
 function formatCodeDisplay(display) {
@@ -86,7 +102,7 @@ codeInputElement.addEventListener('input', () => {
     arrayCode.forEach((characterSpan, index) => {
         const character = arrayInput[index]
         // Then it compares the characters of the input to the display, and adds the correct and incorrect class to the display, and it is styled seperately.
-        if(character == null) {
+        if (character == null) {
             characterSpan.classList.remove('correct')
             characterSpan.classList.remove('incorrect')
             correct = false
@@ -100,7 +116,7 @@ codeInputElement.addEventListener('input', () => {
         }
     });
 
-    if(correct) generateNewCode()
+    if (correct) generateNewCode()
 })
 
 // function startTimer() {

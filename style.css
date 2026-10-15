@@ -48,6 +48,7 @@ nav h1{
     max-width: 100%;
     border: 2px solid;
     padding: 1rem;
+    z-index: 5;
 }
 
 /* #top_bar_thing{
@@ -58,6 +59,7 @@ nav h1{
 
 .code-display{
     padding-bottom: 10px;
+    pointer-events: none;
 }
 
 .correct{
@@ -88,6 +90,8 @@ footer{
     padding-top: 10px;
     padding-bottom: 10px;
     gap: 10px;
+    z-index: 4;
+    pointer-events: auto;
 }
 
 footer img:first-child{
@@ -101,7 +105,7 @@ footer img:first-child{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    z-index: -1;
+    pointer-events: none;
 }
 
 #game-title{
@@ -117,4 +121,5 @@ footer img:first-child{
 
 footer button{
     background-color: #106BDE;
+    cursor: pointer;
 }
