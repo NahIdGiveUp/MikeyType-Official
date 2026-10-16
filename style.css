@@ -92,6 +92,8 @@ footer{
     gap: 10px;
     z-index: 4;
     pointer-events: auto;
+    align-items: center;
+
 }
 
 footer img:first-child{
@@ -122,4 +124,12 @@ footer img:first-child{
 footer button{
     background-color: #106BDE;
     cursor: pointer;
+}
+
+#clock {
+    z-index: 4;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
 }

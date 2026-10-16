@@ -56,19 +56,16 @@ async function generateNewCode() {
 
 // This hides the game windows
 function hideGameWindow() {
-    console.log("I was clicked")
     const gameWindow = document.getElementById("game-window");
     gameWindow.style.display = "none";
 }
 
 function showGameWindow() {
-    console.log("I was clicked")
     const gameWindow = document.getElementById("game-window");
     gameWindow.style.display = "block";
 }
 
 function toggleGameWindow() {
-    console.log("I was clicked")
     const gameWindow = document.getElementById("game-window");
     if (gameWindow.style.display == "none") {
         gameWindow.style.display = "block";
@@ -76,6 +73,22 @@ function toggleGameWindow() {
     else {
         gameWindow.style.display = "none";
     }
+}
+
+function startTime() {
+    const today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+    setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+    if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+    return i;
 }
 // This basically finds the letters and spaces in the div and splits them into seperate spans with the classes letters and space 
 // so that they can be styled individually
@@ -119,9 +132,28 @@ codeInputElement.addEventListener('input', () => {
     if (correct) generateNewCode()
 })
 
-// function startTimer() {
-//     let timeleft = 60
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
 
-// }
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var oneMinute = 60 ,
+        display = document.querySelector('#timer');
+    startTimer(oneMinute, display);
+};
+
+startTime()
 generateNewCode()
