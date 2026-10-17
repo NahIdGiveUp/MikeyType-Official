@@ -22,22 +22,27 @@
         </nav>
         <footer>
             <img src="./images/windows-xp.png" alt="Windows XP icon" height="45px" width="44px">
-            <button onclick="toggleGameWindow()"><img src="./images/xp_terminal.png" alt="Windows XP terminal icon" height="48px" width="48px"></button>
+            <button onclick="toggleGameWindow()"><img src="./images/xp_terminal.png" alt="Windows XP terminal icon"
+                    height="48px" width="48px"></button>
             <div id="clock"></div>
         </footer>
     </div>
-    <div id="timer">1:00</div>
     <div id="game-window">
         <div id="game-title">
             <img src="./images/xp_terminal.png" alt="Windows XP terminal icon" height="20px" width="20px">
             <p>C:\WINDOWS\system32\MikeyType.exe</p>
         </div>
         <div id="game-container">
+            <div id="gameinfo">
+                <p>WPM: <span id="wpm">0</span></p>
+                <div id="timer">1:00</div>
+            </div>
             <div id="codeDisplay" class="code-display"></div>
-            <textarea id="codeInput" class="code-input" autofocus placeholder="Type here"></textarea>   
-            </div>
-            </div>
+            <textarea id="codeInput" class="code-input" autofocus placeholder="Type here"></textarea>
+            <button id="resetButton">Reset</button>
         </div>
+    </div>
+    </div>
     <script src="main.js" defer></script>
 </body>
 

@@ -60,6 +60,7 @@ nav h1{
 .code-display{
     padding-bottom: 10px;
     pointer-events: none;
+    white-space: pre-wrap;
 }
 
 .correct{
@@ -132,4 +133,20 @@ footer button{
     display: flex;
     justify-content: center;
     margin-right: 10px;
+}
+
+#gameinfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#game-container button{
+    width: auto;
+    height: auto;
+    font-size: 12;
+    margin: 10px;
+    padding: 10px;
+    background-color: #000000;
+    color: #ffffff;
 }
