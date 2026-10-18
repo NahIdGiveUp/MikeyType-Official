@@ -146,7 +146,7 @@ codeInputElement.addEventListener("input", () => {
   }
   updateWpm();
 });
-  
+
 let timerInterval;
 let timeleft = 60;
 let gameEnded = false;
@@ -177,12 +177,12 @@ function beginTimer() {
     const seconds = timeleft % 60;
 
     timerDisplay.textContent =
-    // This displays the amount of time left, padding the empty numbers with 0 with padStart
+      // This displays the amount of time left, padding the empty numbers with 0 with padStart
       String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
 
     updateWpm();
     // This clears the timer which was set with setInterval with clearInterval
-    // It also disables the user from typing in the textarea
+    // It also disables the user from typing in the textarea when the timer reaches 0
     if (timeleft <= 0) {
       clearInterval(timerInterval);
       gameEnded = true;
@@ -200,9 +200,10 @@ const gameDuration = 60;
 
 let totalCorrectChars = 0;
 let currentCorrectChars = 0;
-// This calculates the WPM of the user 
+// This calculates the WPM of the user
 function updateWpm() {
   const elapsedSeconds = gameDuration - timeleft;
+  //This ensures the wpm
   if (elapsedSeconds <= 0) {
     wpmElement.textContent = "0";
     return;
@@ -212,13 +213,13 @@ function updateWpm() {
   const minutes = Math.max(elapsedSeconds, 1) / 60;
   wpmElement.textContent = Math.round(words / minutes);
 }
-
+// These call the functions which resets the timer and the randomizer of the display
 function resetGame() {
   resetTimer(60);
   generateNewCode();
 }
-
-document.getElementById('resetButton').addEventListener("click", resetGame)
+// This listens for the user's clicks and calls the function resetGame when the user clicks on the reset button
+document.getElementById("resetButton").addEventListener("click", resetGame);
 
 startTime();
 generateNewCode();

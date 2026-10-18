@@ -1,54 +1,54 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-:root{
-    --primary-color: #000000;
-    --text-color: #ffffff;
-}
-
-html{
-    height: 100%
+:root {
+  --primary-color: #000000;
+  --text-color: #ffffff;
 }
 
-body{
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    background-image: url("images/bliss.jpg");
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+html {
+  height: 100%;
 }
 
-nav{
-    display: flex;
-    z-index: 4;
-    padding: 20px 10px;
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  background-image: url("images/bliss.jpg");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
-nav h1{
-    color: #000000;
+nav {
+  display: flex;
+  z-index: 4;
+  padding: 20px 10px;
 }
 
-#game-container{
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 300px;
-    width: 400px;
-    max-height: 100%;
-    max-width: 100%;
-    border: 2px solid;
-    padding: 1rem;
-    z-index: 5;
+nav h1 {
+  color: #000000;
+}
+
+#game-container {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 300px;
+  width: 400px;
+  max-height: 100%;
+  max-width: 100%;
+  border: 2px solid;
+  padding: 1rem;
+  z-index: 5;
 }
 
 /* #top_bar_thing{
@@ -57,96 +57,95 @@ nav h1{
     border: 2px;
 } */
 
-.code-display{
-    padding-bottom: 10px;
-    pointer-events: none;
-    white-space: pre-wrap;
+.code-display {
+  padding-bottom: 10px;
+  pointer-events: none;
+  white-space: pre-wrap;
 }
 
-.correct{
-    color: rgb(43, 212, 43);
+.correct {
+  color: rgb(43, 212, 43);
 }
 
-.incorrect{
-    color: red;
-    text-decoration: underline;
+.incorrect {
+  color: red;
+  text-decoration: underline;
 }
 
-.code-input{
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    border: 2px solid;
-    outline: none;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    resize: none;
-    padding: .5rem 1rem;
-    font-size: 1rem;
+.code-input {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  resize: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
 }
 
-footer{
-    display: flex;
-    background-color: #106BDE;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    gap: 10px;
-    z-index: 4;
-    pointer-events: auto;
-    align-items: center;
-
+footer {
+  display: flex;
+  background-color: #106bde;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  gap: 10px;
+  z-index: 4;
+  pointer-events: auto;
+  align-items: center;
 }
 
-footer img:first-child{
-    margin: 0 10px;
+footer img:first-child {
+  margin: 0 10px;
 }
 
-#background{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    pointer-events: none;
+#background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  pointer-events: none;
 }
 
-#game-title{
-    border: 2px solid;
-    background-color: #338BFB;
-    color: var(--text-color);
-    display: flex;
+#game-title {
+  border: 2px solid;
+  background-color: #338bfb;
+  color: var(--text-color);
+  display: flex;
 }
 
-#game-title p{
-    margin-left: 5px;
+#game-title p {
+  margin-left: 5px;
 }
 
-footer button{
-    background-color: #106BDE;
-    cursor: pointer;
+footer button {
+  background-color: #106bde;
+  cursor: pointer;
 }
 
 #clock {
-    z-index: 4;
-    margin-left: auto;
-    display: flex;
-    justify-content: center;
-    margin-right: 10px;
+  z-index: 4;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
 }
 
 #gameinfo {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-#game-container button{
-    width: auto;
-    height: auto;
-    font-size: 12;
-    margin: 10px;
-    padding: 10px;
-    background-color: #000000;
-    color: #ffffff;
+#game-container button {
+  width: auto;
+  height: auto;
+  font-size: 12;
+  margin: 10px;
+  padding: 10px;
+  background-color: #000000;
+  color: #ffffff;
 }
